@@ -1,0 +1,67 @@
+{% extends 'academy/base.html' %}
+
+{% block body %}
+ <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                Display Book
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Book ID</th>
+                                                <th>Book Title</th>
+                                                <th>Author</th>
+                                                <th>ISBN</th>
+                                                <th>Genre</th>
+                                                <th>Language</th>
+                                                <th>Summary</th>
+                                                 <th>Edit</th>
+                                                    <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                 <th>Book ID</th>
+                                                <th>Book Title</th>
+                                                <th>Author</th>
+                                                <th>ISBN</th>
+                                                <th>Genre</th>
+                                                <th>Language</th>
+                                                <th>Summary</th>
+                                                 <th>Edit</th>
+                                                    <th>Delete</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        {% for book in books %}
+
+
+                                            <tr>
+                                                <td>{{ book.id }}</td>
+                                                <td>{{ book.title }}</td>
+                                                <td>{{ book.author }}</td>
+                                                <td>{{ book.isbn }}</td>
+                                                <td>{{ book.genre }}</td>
+                                                <td>{{ book.language }}</td>
+                                                <td>{{ book.summary }}</td>
+                                                <td><a href="{% url 'bookreadapp:book_display' book.id %}" target="_blank" >{{ book.file }}</a></td>
+                                                <td><a href="{% url 'academy:book_update' book.id  %}">Edit</a></td>
+                                                <td><a href="{% url 'academy:book_delete' book.id  %}" onclick="return confirm('Are you sure to delete this record?');">Delete</a></td>
+                                            </tr>
+                                           {% endfor  %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+{% endblock %}
+
+
+
+

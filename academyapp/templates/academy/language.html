@@ -1,0 +1,51 @@
+{% extends 'academy/base.html' %}
+
+{% block body %}
+ <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                Display Language
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Language ID</th>
+                                                <th>Language Name</th>
+                                                 <th>Edit</th>
+                                                    <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                 <th>Language ID</th>
+                                                <th>Language Name</th>
+                                                 <th>Edit</th>
+                                                    <th>Delete</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        {% for language in languages %}
+
+
+                                            <tr>
+                                                <td>{{ language.id }}</td>
+                                                <td>{{ language.name }}</td>
+                                                <td><a href="{% url 'academy:language_update' language.id %}">Edit</a></td>
+                                                <td><a href="{% url 'academy:language_delete' language.id %}" onclick="return confirm('Are you sure to delete this record?');">Delete</a></td>
+                                            </tr>
+                                           {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+{% endblock %}
+
+
+
+
